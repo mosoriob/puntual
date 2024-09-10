@@ -8,7 +8,8 @@ function App() {
   const [startDate, setStartDate] = useState<Dayjs>(dayjs('2023-01-03'));
   const [endDate, setEndDate] = useState<Dayjs>(dayjs('2024-08-30'));
 
-  const [profit, setProfit] = useState<number>(0);
+  const [profit, setProfit] = useState<number | null>(0);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const portfolio = new Portfolio();
@@ -16,27 +17,31 @@ function App() {
     portfolio.addStock(new Stock('MSFT', 20));
     try {
       const profit = portfolio.profit(startDate.toDate(), endDate.toDate());
+      setError(null);
       setProfit(profit);
     } catch (e) {
-      console.error(e.message());
+      setProfit(null);
+      setError(e.message);
     }
   }, [startDate, endDate]);
 
   return (
     <>
-      <BasicDateCalendar
-        label="Start Date"
-        value={startDate}
-        setValue={setStartDate}
-        maxDate={endDate}
-      />
-      <BasicDateCalendar
-        label="End Date"
-        value={endDate}
-        setValue={setEndDate}
-        minDate={startDate}
-      />
-      <span>{profit}</span>
+      <>
+        <BasicDateCalendar
+          label="Start Date"
+          value={startDate}
+          setValue={setStartDate}
+          maxDate={endDate}
+        />
+        <BasicDateCalendar
+          label="End Date"
+          value={endDate}
+          setValue={setEndDate}
+          minDate={startDate}
+        />
+      </>
+      <>{error ? <p>{error}</p> : <p>Profit ${profit}</p>}</>
     </>
   );
 }
