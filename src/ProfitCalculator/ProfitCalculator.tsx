@@ -52,7 +52,7 @@ export const ProfitCalculator = ({}) => {
         ) : (
           <>
             {profit && (
-              <ValueDisplay value={profit.toFixed(4)} title="Profit" />
+              <ValueDisplay value={`$ ${profit.toFixed(4)}`} title="Profit" />
             )}
             {annualizedReturn && (
               <ValueDisplay
