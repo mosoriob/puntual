@@ -70,7 +70,6 @@ export const ProfitCalculator = ({}) => {
 const Card = styled.section`
   display: flex;
   max-width: 800px;
-  padding: 24px;
   justify-content: center;
   align-items: center;
   align-content: center;
@@ -82,6 +81,12 @@ const Card = styled.section`
   border: 1px solid rgba(26, 26, 26, 0.1);
   background: #fff;
   box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.08);
+  @media only screen and (max-width: 400px) {
+    padding: 24px 12px;
+  }
+  @media only screen and (min-width: 401px) {
+    padding: 24px;
+  }
 `;
 
 const LeftSection = styled.div`
@@ -112,7 +117,7 @@ const Divider = styled.hr`
 
 const RightSection = styled.div`
   display: flex;
-  min-width: 320px;
+  min-width: 300px;
   flex-direction: column;
   justify-content: center;
   align-items: center;

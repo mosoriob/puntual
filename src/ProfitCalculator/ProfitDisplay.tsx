@@ -24,7 +24,7 @@ const ProfitWrapper = styled.section`
 
 const ProfitTitle = styled.div`
   color: #1a1a1a;
-  font-family: 'Proxima Nova';
+  font-family: Proxima Nova, sans-serif;
   font-size: 22px;
   font-style: normal;
   font-weight: 700;
@@ -38,7 +38,7 @@ const ProfitAmount = styled.div`
   color: #1a1a1a;
 
   text-align: center;
-  font-family: 'Proxima Nova';
+  font-family: Proxima Nova, sans-serif;
   font-size: 22px;
   font-style: normal;
   font-weight: 400;
