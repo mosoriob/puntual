@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import logo from '../assets/logo.png';
 
 export const CardHeader = () => {
   const repositoryLink = 'https://github.com/mosoriob/puntual';
@@ -6,7 +7,8 @@ export const CardHeader = () => {
     <HeaderWrapper>
       <TopSection>
         <InfoContainer>
-          {/* <CompanyLogo src={logoSrc} alt={`${companyName} logo`} /> */}
+          <Image src={logo} className="logo react" alt="React logo" />
+
           <TitleWrapper>
             <CompanyName>Puntual Inc.</CompanyName>
             <MainTitle>Profit Calculator</MainTitle>
@@ -28,6 +30,11 @@ const HeaderWrapper = styled.header`
   width: 100%;
   flex-direction: column;
   justify-content: start;
+`;
+
+const Image = styled.img`
+  width: 64px;
+  height: 64px;
 `;
 
 const TopSection = styled.div`
