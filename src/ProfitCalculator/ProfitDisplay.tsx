@@ -9,8 +9,8 @@ interface ValueDisplayProps {
 export const ValueDisplay: React.FC<ValueDisplayProps> = ({ title, value }) => {
   return (
     <ProfitWrapper>
-      <ProfitTitle>${title}</ProfitTitle>
-      <ProfitAmount>${value}</ProfitAmount>
+      <ProfitTitle>{title}</ProfitTitle>
+      <ProfitAmount>{value}</ProfitAmount>
     </ProfitWrapper>
   );
 };
