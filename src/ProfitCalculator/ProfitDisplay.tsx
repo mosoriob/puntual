@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 interface ValueDisplayProps {
   title: string;
-  value: number;
+  value: number | string;
 }
 
 export const ValueDisplay: React.FC<ValueDisplayProps> = ({ title, value }) => {
