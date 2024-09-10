@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { DateSelector } from './DatesSelector';
 import { ValueDisplay } from './ProfitDisplay';
 import dayjs, { Dayjs } from 'dayjs';
-import { Portfolio, Stock } from '../models/portafolio';
+import { Portfolio, Stock } from '../models/portfolio';
 import { CardHeader } from './CardHeader';
 
 export const ProfitCalculator = ({}) => {
@@ -17,7 +17,7 @@ export const ProfitCalculator = ({}) => {
   useEffect(() => {
     const portfolio = new Portfolio();
     portfolio.addStock(new Stock('AAPL', 10));
-    portfolio.addStock(new Stock('MSFT', 20));
+    portfolio.addStock(new Stock('MSFT', 10));
     try {
       const profit = portfolio.profit(startDate.toDate(), endDate.toDate());
       const annualizedReturn = portfolio.annualizedReturn(

@@ -1,50 +1,63 @@
-# React + TypeScript + Vite
+# Puntual - Portfolio Profit and Annualized Return Calculator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a simple web application for calculating the profit and annualized return of a stock portfolio between two dates. The app is built using Vite, React, and Material UI (MUI) for the frontend.
 
-Currently, two official plugins are available:
+The portfolio is fixed and consists of the following stocks:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Apple Inc. (AAPL) x 10 shares
+- Microsoft Corporation (MSFT) x 10 shares
 
-## Expanding the ESLint configuration
+The class logic for calculating the profit and annualized return is located in the [`src/models/portfolio.ts`](src/models/portfolio.ts) file.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features
 
-- Configure the top-level `parserOptions` property like this:
+- Select start and end dates using a date picker.
+- Calculate the profit between the selected dates.
+- Calculate the annualized return based on the portfolio's profit.
+- Responsive design with Material UI components.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Live Demo
+
+Check out the live demo of the app: [Puntual App](https://puntual.netlify.app/)
+
+## Installation
+
+To set up and run the project locally, follow these steps:
+
+1. **Clone the repository**:
+
+```bash
+git clone https://github.com/mosoriob/puntual.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2.  **Navigate to the project folder**:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+cd puntual
 ```
+
+3.  Install dependencies\*\*:
+
+```bash
+npm install
+```
+
+4.  **Run the development server**:
+
+```bash
+npm run dev
+```
+
+4.  Open `http://localhost:5173` in your browser to view the application.
+
+## Usage
+
+1.  Use the date picker to select the start and end dates.
+2.  The app will display the portfolio's profit and annualized return based on the selected dates.
+
+## Technologies Used
+
+- **Vite**: A fast build tool for modern web projects.
+- **React**: A JavaScript library for building user interfaces.
+- **TypeScript**: Strongly typed JavaScript for better code quality.
+- **Material UI (MUI)**: A popular React UI framework.
