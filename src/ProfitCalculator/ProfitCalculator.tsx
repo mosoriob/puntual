@@ -30,7 +30,7 @@ export const ProfitCalculator = ({}) => {
     } catch (e) {
       setProfit(null);
       setAnnualizedReturn(null);
-      setError(e.message);
+      setError((e as Error).message);
     }
   }, [startDate, endDate]);
 
