@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import BasicDateCalendar from '../components/BasicDateCalendar';
 import dayjs from 'dayjs';
 
+const MIN_DATA_DATE = dayjs('2023-01-03');
+const MAX_DATA_DATE = dayjs('2024-09-06');
+
 interface DateSelectorProps {
   startDate: dayjs.Dayjs;
   setStartDate: (date: dayjs.Dayjs) => void;
@@ -23,13 +26,15 @@ export const DateSelector: React.FC<DateSelectorProps> = ({
         label="Start Date"
         value={startDate}
         setValue={setStartDate}
-        maxDate={endDate}
+        maxDate={endDate.subtract(1, 'day')}
+        minDate={MIN_DATA_DATE}
       />
       <BasicDateCalendar
         label="End Date"
         value={endDate}
         setValue={setEndDate}
-        minDate={startDate}
+        minDate={startDate.add(1, 'day')}
+        maxDate={MAX_DATA_DATE}
       />
     </DateSelectorWrapper>
   );
