@@ -11,6 +11,7 @@ export const ProfitCalculator = ({}) => {
   const [startDate, setStartDate] = useState<Dayjs>(dayjs('2023-01-03'));
   const [endDate, setEndDate] = useState<Dayjs>(dayjs('2024-08-30'));
   const [profit, setProfit] = useState<number | null>(0);
+  const [annualizedReturn, setAnnualizedReturn] = useState<number | null>(0);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -19,10 +20,16 @@ export const ProfitCalculator = ({}) => {
     portfolio.addStock(new Stock('MSFT', 20));
     try {
       const profit = portfolio.profit(startDate.toDate(), endDate.toDate());
+      const annualizedReturn = portfolio.annualizedReturn(
+        startDate.toDate(),
+        endDate.toDate()
+      );
       setError(null);
       setProfit(profit);
+      setAnnualizedReturn(annualizedReturn);
     } catch (e) {
       setProfit(null);
+      setAnnualizedReturn(null);
       setError(e.message);
     }
   }, [startDate, endDate]);
@@ -44,8 +51,15 @@ export const ProfitCalculator = ({}) => {
           <p>{error}</p>
         ) : (
           <>
-            <ValueDisplay value={profit} title="Profit" />
-            <ValueDisplay value={profit} title="Profit" />
+            {profit && (
+              <ValueDisplay value={`$ ${profit.toFixed(4)}`} title="Profit" />
+            )}
+            {annualizedReturn && (
+              <ValueDisplay
+                value={`${annualizedReturn?.toFixed(4)} %`}
+                title="Annualized Return"
+              />
+            )}
           </>
         )}
       </RightSection>
