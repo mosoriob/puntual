@@ -21,7 +21,7 @@ export class Stock {
     }
   }
   price(date: Date): number | undefined {
-    const dateStr = date.toISOString().split('T')[0];
+    const dateStr = formatToISODate(date);
     return this.priceData[dateStr];
   }
 }
@@ -60,11 +60,11 @@ export class Portfolio {
 }
 
 const errorMessageNoDataForDate = (stockName: string, date: Date): string => {
-  return `No price data available for stock '${stockName}' on the given date ${formatDate(
+  return `No price data available for stock '${stockName}' on the given date ${formatToISODate(
     date
   )}`;
 };
 
-const formatDate = (date: Date): string => {
+const formatToISODate = (date: Date): string => {
   return date.toISOString().split('T')[0];
 };
