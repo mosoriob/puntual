@@ -1,35 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
+import BasicDateCalendar from './components/BasicDateCalendar';
+import dayjs, { Dayjs } from 'dayjs';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [startDate, setStartDate] = useState<Dayjs>(dayjs('2023-01-03'));
+  const [endDate, setEndDate] = useState<Dayjs>(dayjs('2024-08-30'));
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <BasicDateCalendar
+        label="Start Date"
+        value={startDate}
+        setValue={setStartDate}
+        maxDate={endDate}
+      />
+      <BasicDateCalendar
+        label="End Date"
+        value={endDate}
+        setValue={setEndDate}
+        minDate={startDate}
+      />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
