@@ -41,10 +41,7 @@ function App() {
           minDate={startDate}
         />
       </>
-      <>
-        {error && <p>{error}</p>}
-        {profit !== null && <p>Profit ${profit}</p>}
-      </>
+      <>{error ? <p>{error}</p> : <p>Profit ${profit}</p>}</>
     </>
   );
 }
