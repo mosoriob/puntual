@@ -20,7 +20,7 @@ export const DateSelector: React.FC<DateSelectorProps> = ({
 }) => {
   return (
     <section className="flex w-full flex-col gap-6">
-      <h2 className="text-[#1a1a1a] text-2xl font-bold">Select Dates</h2>
+      <h2 className="text-black text-2xl font-bold">Select Dates</h2>
       <BasicDateCalendar
         label="Start Date"
         value={startDate}

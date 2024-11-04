@@ -40,24 +40,21 @@ export class Portfolio {
     this.stocks.push(stock);
   }
 
-  profit(startDate: Date, endDate: Date): number {
-    let startValue = 0;
-    let endValue = 0;
-
+  private calculatePortfolioValue(date: Date): number {
+    let value = 0;
     for (const stock of this.stocks) {
-      const startPrice = stock.price(startDate);
-      const endPrice = stock.price(endDate);
-      if (startPrice === undefined) {
-        throw new Error(errorMessageNoDataForDate(stock.name, startDate));
+      const price = stock.price(date);
+      if (price === undefined) {
+        throw new Error(errorMessageNoDataForDate(stock.name, date));
       }
-
-      if (endPrice === undefined) {
-        throw new Error(errorMessageNoDataForDate(stock.name, endDate));
-      }
-      startValue += startPrice * stock.shares;
-      endValue += endPrice * stock.shares;
+      value += price * stock.shares;
     }
+    return value;
+  }
 
+  profit(startDate: Date, endDate: Date): number {
+    const startValue = this.calculatePortfolioValue(startDate);
+    const endValue = this.calculatePortfolioValue(endDate);
     return endValue - startValue;
   }
 
@@ -65,25 +62,20 @@ export class Portfolio {
   // https://corporatefinanceinstitute.com/resources/career-map/sell-side/capital-markets/annual-return/
   // https://www.investopedia.com/terms/a/annual-return.asp
   annualizedReturn(startDate: Date, endDate: Date): number {
-    let startValue = 0;
-    let endValue = 0;
-
-    for (const stock of this.stocks) {
-      startValue += stock.price(startDate) * stock.shares;
-      endValue += stock.price(endDate) * stock.shares;
-    }
+    const startValue = this.calculatePortfolioValue(startDate);
+    const endValue = this.calculatePortfolioValue(endDate);
 
     // Calculate the time difference in years
     const daysDiff = calculateDifferenceInDays(startDate, endDate);
     const yearsDiff = daysDiff / DAYS_IN_A_YEAR;
     if (startValue === 0) {
       throw new Error(
-        'Start value of the portfolio is zero, cannot compute annualized return'
+        'Start value of the portfolio is zero, cannot compute annualized return',
       );
     }
     if (yearsDiff === 0) {
       throw new Error(
-        'Time difference is zero, cannot compute annualized return'
+        'Time difference is zero, cannot compute annualized return',
       );
     }
 
@@ -100,7 +92,7 @@ const calculateDifferenceInDays = (startDate: Date, endDate: Date): number => {
 
 const errorMessageNoDataForDate = (stockName: string, date: Date): string => {
   return `No price data available for stock '${stockName}' on the given date ${formatToISODate(
-    date
+    date,
   )}`;
 };
 

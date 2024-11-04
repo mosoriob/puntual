@@ -20,8 +20,8 @@ export const ValueDisplay: React.FC<ValueDisplayProps> = ({
   }
   return (
     <section className="flex justify-between items-start self-stretch">
-      <div className="text-white text-2xl font-bold">{title}</div>
-      <div className="flex items-center gap-4 text-white text-center text-2xl font-normal md:whitespace-normal">
+      <div className="text-black text-2xl font-bold">{title}</div>
+      <div className="flex items-center gap-4 text-black text-center text-2xl font-normal md:whitespace-normal">
         {prefixSymbol}
         {value.toFixed(precision)}
         {suffixSymbol}

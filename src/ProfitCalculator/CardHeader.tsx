@@ -8,11 +8,11 @@ export const CardHeader = () => {
         <div className="flex w-full flex-col font-bold justify-start">
           <img src={logo} className="w-16 h-16" alt="React logo" />
           <div className="flex mt-2 w-full flex-col justify-start">
-            <h2 className="text-white text-base">Puntual Inc.</h2>
-            <h1 className="text-white text-2xl">Profit Calculator</h1>
+            <h2 className="text-black text-base">Puntual Inc.</h2>
+            <h1 className="text-black text-2xl">Profit Calculator</h1>
           </div>
         </div>
-        <p className="text-white text-base font-normal leading-6 mt-6">
+        <p className="text-black text-base font-normal leading-6 mt-6">
           This portfolio includes: 10 shares of MSFT (Microsoft) 10 shares of
           AAPL (Apple) The stock data is sourced using the Python yfinance
           library.
