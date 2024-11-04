@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import BasicDateCalendar from '../components/BasicDateCalendar';
 import dayjs from 'dayjs';
 
@@ -20,8 +19,8 @@ export const DateSelector: React.FC<DateSelectorProps> = ({
   setEndDate,
 }) => {
   return (
-    <DateSelectorWrapper>
-      <SectionTitle>Select Dates</SectionTitle>
+    <section className="flex w-full flex-col gap-6">
+      <h2 className="text-[#1a1a1a] text-2xl font-bold">Select Dates</h2>
       <BasicDateCalendar
         label="Start Date"
         value={startDate}
@@ -36,18 +35,6 @@ export const DateSelector: React.FC<DateSelectorProps> = ({
         minDate={startDate.add(1, 'day')}
         maxDate={MAX_DATA_DATE}
       />
-    </DateSelectorWrapper>
+    </section>
   );
 };
-
-const DateSelectorWrapper = styled.section`
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  gap: 24px;
-`;
-
-const SectionTitle = styled.h2`
-  color: #1a1a1a;
-  font: 700 24px Proxima Nova, sans-serif;
-`;
