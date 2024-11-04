@@ -4,7 +4,7 @@ import { DateSelector } from './DatesSelector';
 import { ValueDisplay } from './ProfitDisplay';
 import dayjs, { Dayjs } from 'dayjs';
 import { Portfolio, Stock } from '../models/portfolio';
-import { ErrorWrapper } from './ErrorWrapper';
+import { ErrorWrapper } from '../components/ErrorWrapper';
 
 export const ProfitCalculator = () => {
   const [startDate, setStartDate] = useState<Dayjs>(dayjs('2023-01-03'));
