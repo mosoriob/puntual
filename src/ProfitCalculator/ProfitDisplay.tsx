@@ -1,49 +1,31 @@
 import React from 'react';
-import styled from 'styled-components';
 
 interface ValueDisplayProps {
   title: string;
-  value: number | string;
+  value: number | null;
+  precision?: number;
+  prefixSymbol?: string;
+  suffixSymbol?: string;
 }
 
-export const ValueDisplay: React.FC<ValueDisplayProps> = ({ title, value }) => {
+export const ValueDisplay: React.FC<ValueDisplayProps> = ({
+  title,
+  value,
+  precision = 4,
+  prefixSymbol = '',
+  suffixSymbol = '',
+}) => {
+  if (!value) {
+    return null;
+  }
   return (
-    <ProfitWrapper>
-      <ProfitTitle>{title}</ProfitTitle>
-      <ProfitAmount>{value}</ProfitAmount>
-    </ProfitWrapper>
+    <section className="flex justify-between items-start self-stretch">
+      <div className="text-white text-2xl font-bold">{title}</div>
+      <div className="flex items-center gap-4 text-white text-center text-2xl font-normal md:whitespace-normal">
+        {prefixSymbol}
+        {value.toFixed(precision)}
+        {suffixSymbol}
+      </div>
+    </section>
   );
 };
-
-const ProfitWrapper = styled.section`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  align-self: stretch;
-`;
-
-const ProfitTitle = styled.div`
-  color: #1a1a1a;
-  font-family: Proxima Nova, sans-serif;
-  font-size: 22px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 150%; /* 33px */
-`;
-
-const ProfitAmount = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: #1a1a1a;
-
-  text-align: center;
-  font-family: Proxima Nova, sans-serif;
-  font-size: 22px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 150%; /* 33px */
-  @media (max-width: 991px) {
-    white-space: initial;
-  }
-`;
